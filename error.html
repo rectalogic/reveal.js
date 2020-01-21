@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>gist-reveal - gist unspecified</title>
+        <style type="text/css">
+            body {
+                font-family: "Source Sans Pro", Helvetica, sans-serif;
+                font-size: 32px;
+                font-weight: normal;
+                color: #fff;
+                background: #191919;
+            }
+            input[type="text"] {
+                font-size: 22px;
+            }
+            a {
+                color: #42affa;
+            }
+        </style>
+        <script>
+            function submitMarkdownURL() {
+                var markdownURL = document.getElementById('markdownURL').value;
+                window.location.replace( "./?markdownURL=" + encodeURIComponent(markdownURL) );
+            }
+        </script>
+	</head>
+	<body>
+        <h2>Enter markdown URL.</h2>
+        If using a github gist:<br/>
+        <code>https://gist.github.com/USERNAME/GIST_ID</code><br/>
+        replace the following:<br/>
+        <form action="#" method="GET" id="form">
+            <input type="text" id="markdownURL" size="64" value="https://gist.githubusercontent.com/USERNAME/GIST_ID/raw/FILENAME.md"/>
+            <br/>
+            <input type="button" value="Submit" onclick="submitMarkdownURL()"/>
+        </form>
+        <div><a href="./?markdownURL=help.md">gist-reveal help</a></div>
+    </body>
+</html>

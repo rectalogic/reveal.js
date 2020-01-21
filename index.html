@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>gist-reveal</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -12,12 +12,19 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
 			</div>
 		</div>
 
@@ -25,6 +32,19 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+
+		<!-- Remote markdown slides -->
+		<script>
+			var search = new URLSearchParams(window.location.search);
+			if ( !search.has( "markdownURL" ) ) {
+				window.location.replace( "error.html" );
+			}
+			var slides = document.createElement( 'section' );
+			slides.setAttribute( 'data-separator-vertical', '^\\r?\\nVVV\\r?\\n$' );
+			slides.setAttribute( 'data-markdown', decodeURIComponent( search.get("markdownURL") ) );
+			document.getElementsByClassName( 'slides' )[0].appendChild( slides );
+		</script>
+
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
